@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": -75.56,
+      "left": 91.49,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 25.77,
+      "left": -90.3,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 158.43,
+      "left": -96.96,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ntc1:OUT", "esp:D32", "green", [ "v0" ] ],
+    [ "ntc1:VCC", "esp:GND.2", "red", [ "v0" ] ],
+    [ "ntc1:GND", "esp:VIN", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D14", "green", [ "v0" ] ],
+    [ "led1:C", "r1:1", "green", [ "v69.73", "h-22.33" ] ],
+    [ "r1:2", "esp:GND.2", "green", [ "v0" ] ]
+  ]
+}
